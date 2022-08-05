@@ -29,6 +29,9 @@ function Search({ books, remove_book, change_list }) {
     }
     return (
         <div className="search">
+            <header>
+                <h1>Search Page</h1>
+            </header>
             <input type="text" placeholder="Search" value={searchInput} onChange={(e) => handle(e.target.value)} />
             <div className="search_page_content">
                 <Link to="/">

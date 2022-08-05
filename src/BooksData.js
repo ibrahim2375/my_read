@@ -34,5 +34,20 @@ export const Books = [
         book_img: 'https://th.bing.com/th/id/R.15a0115468f8ce9959ac4b9d2858184b?rik=NY60WiEh0xEJJQ&riu=http%3a%2f%2fblog.kimhooperwrites.com%2fwp-content%2fuploads%2fsites%2f3%2f2015%2f04%2fbook-cover-6.jpg&ehk=9NpLArfXrr06RXbgD6yOwj8Oa%2fkG38aOksC9QKcDrP0%3d&risl=&pid=ImgRaw&r=0',
         state: 'read'
     },
+    {
+        id: 6,
+        book_name: 'PLAYING WITH FIRE',
+        book_author: 'joe',
+        book_img: ' https://d1csarkz8obe9u.cloudfront.net/posterpreviews/animated-book-cover-kindle-template-design-e8d6b70de1343119bcfbd074953f587e_screen.jpg?ts=1637035736',
+        state: 'want_to_read'
+    },
+    {
+        id: 7,
+        book_name: 'ORIGIN',
+        book_author: 'The lost history',
+        book_img: 'https://d1csarkz8obe9u.cloudfront.net/posterpreviews/movie-poster-template-design-71650f9b1c11091f5bcd637d4a18d9a7_screen.jpg?ts=1636996858',
+        state: "want_to_read"
+    }
+
 
 ]

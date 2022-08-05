@@ -9,7 +9,12 @@
 .App{
   position: relative;
  } 
- .App .Add_books{
+
+ /* Home */
+ .Home{
+  position: relative;
+ }
+  .Home .Add_books {
     cursor: pointer;
     position: fixed;
     bottom: 20px;
@@ -25,8 +30,7 @@
     -moz-border-radius: 50%;
     -ms-border-radius: 50%;
     -o-border-radius: 50%;
- }
- /* Home */
+  }
 header {
     padding: 30px 0;
     text-align:center;

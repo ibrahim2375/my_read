@@ -30,7 +30,7 @@ function Books_Section({ Books, Remove_Book, Change_List, section_data }) {
                                     <select value={cr.state} onChange={(e) => handleBook(e, cr.id)}>
                                         <option value="currently_reading">currently reading</option>
                                         <option value="read">read</option>
-                                        <option value="want to read">want to read</option>
+                                        <option value="want_to_read">want to read</option>
                                         <option value="none">none</option>
                                     </select>
                                 </div>
