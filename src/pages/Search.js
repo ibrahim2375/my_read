@@ -10,6 +10,7 @@ function Search({ books, remove_book, change_list }) {
         setsearchInput(event.trim());
     }
     //search
+    // const result = searchInput !== "" ? books.filter((B) => B.book_name.toLowerCase().includes(searchInput.toLowerCase())) : [];
     const result = books.filter((B) => B.book_name.toLowerCase().includes(searchInput.toLowerCase()));
     ///handel
     const handleBook = (event, id) => {
@@ -29,45 +30,39 @@ function Search({ books, remove_book, change_list }) {
     }
     return (
         <div className="search">
-            <header>
-                <h1>Search Page</h1>
-            </header>
             <input type="text" placeholder="Search" value={searchInput} onChange={(e) => handle(e.target.value)} />
             <div className="search_page_content">
                 <Link to="/">
                     <KeyboardBackspaceIcon sx={{ color: 'green', fontSize: '32px' }} />
                 </Link>
-                <div className="serch_result">
-                    <ol className="books">
-                        {
-                            result.map((cr) => (
-                                <li className="book" key={cr.id} >
-                                    <div className="image">
-                                        <img src={cr.book_img} alt="" />
-                                        <div className="select_menu">
-                                            <div className="select_icon">
-                                                <div className="arrow_icon">
-                                                    <ArrowDropDownIcon sx={{ color: 'white', fontSize: '32px' }} />
-                                                </div>
-                                                <select value={cr.state} onChange={(e) => handleBook(e, cr.id)}>
-                                                    <option value="currently_reading">currently reading</option>
-                                                    <option value="read">read</option>
-                                                    <option value="want_to_read">want to read</option>
-                                                    <option value="none">none</option>
-                                                </select>
+                <ol className="books">
+                    {
+                        result.map((cr) => (
+                            <li className="book" key={cr.id} >
+                                <div className="image">
+                                    <img src={cr.book_img} alt="" />
+                                    <div className="select_menu">
+                                        <div className="select_icon">
+                                            <div className="arrow_icon">
+                                                <ArrowDropDownIcon sx={{ color: 'white', fontSize: '32px' }} />
                                             </div>
+                                            <select value={cr.state} onChange={(e) => handleBook(e, cr.id)}>
+                                                <option value="currently_reading">currently reading</option>
+                                                <option value="read">read</option>
+                                                <option value="want_to_read">want to read</option>
+                                                <option value="none">none</option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div className="book_details">
-                                        <h4>{cr.book_name}</h4>
-                                        <p>{cr.book_author}</p>
-                                    </div>
-                                </li>
-                            ))
-                        }
-                    </ol>
-
-                </div>
+                                </div>
+                                <div className="book_details">
+                                    <h4>{cr.book_name}</h4>
+                                    <p>{cr.book_author}</p>
+                                </div>
+                            </li>
+                        ))
+                    }
+                </ol>
             </div>
         </div>
     )
