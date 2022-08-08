@@ -1,10 +1,9 @@
-
 //MUI icons
 import AddIcon from '@mui/icons-material/Add';
 //components
 import BooksSection from '../components/Books_Section'
 //router
-import {Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 function Home({ books, remove_book, change_list }) {
     return (
         <div className="Home">

@@ -2,7 +2,6 @@ import './css/App.css';
 import { useState } from 'react'
 //import books data
 import { Books } from './BooksData'
-
 //components
 import Home from './pages/Home'
 import Search from './pages/Search'
