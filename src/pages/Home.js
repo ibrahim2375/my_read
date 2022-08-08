@@ -8,7 +8,7 @@ function Home({ books, remove_book, change_list }) {
     return (
         <div className="Home">
             <header>
-                <h1>My Read</h1>
+                <h1>My Reads</h1>
             </header>
             <section>
                 <h1>Currently Reading</h1>
