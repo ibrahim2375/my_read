@@ -1,3 +1,5 @@
+//porp types
+import PropTypes from 'prop-types'
 // MUI icons
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 function Books_Section({ Books, Remove_Book, Change_List, section_data }) {
@@ -45,5 +47,11 @@ function Books_Section({ Books, Remove_Book, Change_List, section_data }) {
             }
         </ol>
     )
+}
+Books_Section.prototype = {
+    Books: PropTypes.array.isRequired,
+    Remove_Book: PropTypes.func.isRequired,
+    Change_List: PropTypes.func.isRequired,
+    section_data: PropTypes.string.isRequired
 }
 export default Books_Section;

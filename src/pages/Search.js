@@ -1,3 +1,5 @@
+//porp types
+import PropTypes from 'prop-types'
 import React, { useState } from 'react'
 //icons
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
@@ -11,7 +13,6 @@ function Search({ books, remove_book, change_list }) {
     }
     //search
     const result = searchInput !== "" ? books.filter((B) => B.book_name.toLowerCase().includes(searchInput.toLowerCase())) : [];
-    // const result = books.filter((B) => B.book_name.toLowerCase().includes(searchInput.toLowerCase()));
     ///handel
     const handleBook = (event, id) => {
         const selected_value = event.target.value;
@@ -67,5 +68,10 @@ function Search({ books, remove_book, change_list }) {
         </div>
     )
 }
-
+Search.prototype = {
+    Books: PropTypes.array.isRequired,
+    Remove_Book: PropTypes.func.isRequired,
+    Change_List: PropTypes.func.isRequired,
+    section_data: PropTypes.string.isRequired
+}
 export default Search
