@@ -15,7 +15,10 @@ function Search({ books, remove_book, change_list }) {
     ///handel
     const handleBook = (event, id) => {
         const selected_value = event.target.value;
-        if (selected_value === 'currently_reading') {
+        if (selected_value === 'none') {
+            remove_book(id);
+        }
+        else if (selected_value === 'currently_reading') {
             change_list(id, 'currently_read');
         }
         else if (selected_value === 'read') {
@@ -27,7 +30,7 @@ function Search({ books, remove_book, change_list }) {
     }
     return (
         <div className="search">
-            <input type="text" placeholder="Search" value={searchInput} onChange={(e) => handle(e.target.value)} />
+            <input type="text" placeholder="Search by title" value={searchInput} onChange={(e) => handle(e.target.value)} />
             <div className="search_page_content">
                 <Link to="/">
                     <KeyboardBackspaceIcon sx={{ color: 'green', fontSize: '32px' }} />
@@ -47,6 +50,7 @@ function Search({ books, remove_book, change_list }) {
                                                 <option value="currently_reading">currently reading</option>
                                                 <option value="read">read</option>
                                                 <option value="want_to_read">want to read</option>
+                                                <option value="none">none</option>
                                             </select>
                                         </div>
                                     </div>
