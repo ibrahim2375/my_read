@@ -25,7 +25,7 @@ export const Books = [
         book_name: 'GREEN LINE',
         book_author: 'deskin',
         book_img: 'https://www.creativindiecovers.com/wp-content/gallery/portfolio/greenweb.jpg',
-        state: 'currently_read'
+        state: 'want_to_read'
     },
     {
         id: 5,
@@ -60,7 +60,7 @@ export const Books = [
         book_name: 'JAVA',
         book_author: 'K.somaundarma',
         book_img: 'https://imgv2-2-f.scribdassets.com/img/word_document/317276308/original/adfe3e30f6/1611644272?v=1',
-        state: "want_to_read"
+        state: "currently_read"
     },
     {
         id: 11,

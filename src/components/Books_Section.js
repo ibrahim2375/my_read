@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types'
 // MUI icons
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-function Books_Section({ Books, Remove_Book, Change_List, section_data }) {
+function Books_Section({ Books, Remove_Book, Change_List, section_data, result }) {
     const handleBook = (event, id) => {
         const selected_value = event.target.value;
         if (selected_value === 'none') {
@@ -20,7 +20,7 @@ function Books_Section({ Books, Remove_Book, Change_List, section_data }) {
     return (
         <ol className="books">
             {
-                Books.filter((book) => book.state === section_data).map((cr) => (
+                (section_data ? Books.filter((book) => book.state === section_data) : result).map((cr) => (
                     <li className="book" key={cr.id} >
                         <div className="image">
                             <img src={cr.book_img} alt="" />
