@@ -1,29 +1,35 @@
 import './css/App.css';
-import { useState } from 'react'
-//import books data
-import { Books } from './BooksData'
+import { useState, useEffect } from 'react'
+/////
+import * as booksApi from './BooksAPI'
+///
 //components
 import Home from './pages/Home'
 import Search from './pages/Search'
 //router
 import { Routes, Route } from 'react-router-dom'
 function App() {
-  const [books, setbooks] = useState(Books)
-  const remove_book = (id) => {
-    setbooks(books.filter((b) => b.id !== id));
+  const [books, setbooks] = useState([])
+  ///change shelf
+  const change_list = async (book, shelf) => {
+    await booksApi.update(book, shelf);
+    await booksApi.getAll().then((res => setbooks(res)));
   }
-  const change_list = (id, state) => {
-    setbooks(books.map((b) => b.id === id ? { ...b, state: state } : b));
-  }
+  useEffect(() => {
+    const getBooks = async () => {
+      const res = await booksApi.getAll();
+      setbooks(res);
+    }
+    getBooks();
+  }, [])
   return (
     <div className="App">
       <Routes>
-        <Route exact path="/" element={<Home remove_book={remove_book} change_list={change_list} books={books} />}>
+        <Route exact path="/" element={<Home change_list={change_list} books={books} />}>
         </Route>
-        <Route path="/search" element={<Search remove_book={remove_book} change_list={change_list} books={books} />}>
+        <Route path="/search" element={<Search change_list={change_list} books={books} />}>
         </Route>
       </Routes>
-
     </div>
   );
 }
