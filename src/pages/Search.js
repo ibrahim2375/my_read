@@ -4,9 +4,8 @@ import PropTypes from 'prop-types'
 //router
 import { Link } from 'react-router-dom'
 import * as booksApi from '../BooksAPI'
-// MUI icons
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-
+//components 
+import Book from '../components/Book'
 function Search({ books, change_list }) {
     const [searchInput, setsearchInput] = useState('');
     const [search, setsearch] = useState([]);
@@ -14,14 +13,10 @@ function Search({ books, change_list }) {
     const handle = (event) => {
         setsearchInput(event);
     }
-    const handleBook = (event, book) => {
-        const selected_value = event.target.value;
-        change_list(book, selected_value);
-    }
     //search
     useEffect(() => {
         if (searchInput !== '') {
-            booksApi.search(searchInput, 20).then((res) => {
+            booksApi.search(searchInput, 100).then((res) => {
                 if (res && !res.error) {
                     setsearch(res.map(s => {
                         books.forEach(b => { if (s.id === b.id) { s.shelf = b.shelf } })
@@ -44,31 +39,9 @@ function Search({ books, change_list }) {
                 <ol className="books">
                     {
                         loading === true ?
-                            (search.map((cr) => (
-                                <li className="book" key={cr.id} >
-                                    <div className="image">
-                                        <img src={cr.imageLinks.thumbnail} alt="book" />
-                                        <div className="select_menu">
-                                            <div className="select_icon">
-                                                <div className="arrow_icon">
-                                                    <ArrowDropDownIcon sx={{ color: 'white', fontSize: '32px' }} />
-                                                </div>
-                                                <select value={cr.shelf ?? 'none'} onChange={(e) => handleBook(e, cr)}>
-                                                    <option value="currentlyReading">currently reading</option>
-                                                    <option value="read">read</option>
-                                                    <option value="wantToRead">want to read</option>
-                                                    <option value="none">none</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="book_details">
-                                        <h4>{cr.title}</h4>
-                                        <p>{cr.authors[0]}</p>
-                                    </div>
-                                </li>
+                            (search.map((b) => (
+                                <Book key={b.id} imageLinks={b.imageLinks ? b.imageLinks.thumbnail : null} title={b.title} authors={b.authors} Change_List={change_list} shelf={b.shelf ?? 'none'} book={b} />
                             ))) : ''
-
                     }
                 </ol>
             </div>
