@@ -7,8 +7,8 @@ function Books_Section({ Books, Change_List, section_data }) {
         <ol className="books">
             {
                 Books.filter((book) => book.shelf === section_data).map((b) => (
-                    <Book key={b.id} imageLinks={b.imageLinks.thumbnail} title={b.title} authors={b.authors} Change_List={Change_List} shelf={b.shelf} book={b} />
-
+                    <Book key={b.id} imageLinks={b.imageLinks ? b.imageLinks.thumbnail : null} title={b.title} authors={b.authors} Change_List={Change_List} shelf={b.shelf} book={b} />
+                   
                 ))
             }
         </ol>
