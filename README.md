@@ -10,4 +10,3 @@
 
 # I also handled the search page and I used Router to navigate between Home and search components
 
-# OK that is everything 😄

@@ -12,7 +12,9 @@ function App() {
   const [books, setbooks] = useState([])
   ///change shelf
   const change_list = async (book, shelf) => {
-    await booksApi.update(book, shelf);
+    await booksApi.update(book, shelf).then(_ => {
+      setbooks([...books.filter(b => b.id !== book.id), book])
+    });
     await booksApi.getAll().then((res => setbooks(res)));
   }
   useEffect(() => {
