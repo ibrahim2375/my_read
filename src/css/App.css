@@ -107,9 +107,9 @@ section h1 {
     border: none;
     appearance: none;
     height:100%;
-    width:300%;
+    width:350%;
     position: absolute;
-    left: -200%;
+    left: -250%;
     background-color: transparent;
     border-radius: 50%;
     -webkit-border-radius: 50%;
