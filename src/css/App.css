@@ -49,7 +49,7 @@ section h1 {
 .books {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     flex-wrap: wrap;
     gap: 40px;
@@ -70,6 +70,7 @@ section h1 {
 .books .book .image img {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 .books .book .image .select_menu {
     position: absolute;
