@@ -11,12 +11,12 @@ function Search({ books, change_list }) {
     const [search, setsearch] = useState([]);
     const [loading, setloading] = useState(false);
     const handle = (event) => {
-        setsearchInput(event.trim());
+        setsearchInput(event);
     }
     //search
     useEffect(() => {
         if (searchInput !== '') {
-            booksApi.search(searchInput, 20).then((res) => {
+            booksApi.search(searchInput.trim(), 20).then((res) => {
                 if (res && !res.error) {
                     setsearch(res.map(s => {
                         books.forEach(b => { if (s.id === b.id) { s.shelf = b.shelf } })
