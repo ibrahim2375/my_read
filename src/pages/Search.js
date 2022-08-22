@@ -12,6 +12,9 @@ function Search({ books, change_list }) {
     const [loading, setloading] = useState(false);
     const handle = (event) => {
         setsearchInput(event);
+        if (searchInput === '') {
+            setsearch([])
+        }
     }
     //search
     useEffect(() => {
