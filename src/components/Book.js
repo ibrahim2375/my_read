@@ -15,7 +15,7 @@ function Book({ imageLinks, title, authors, Change_List, shelf, book }) {
         const selected_value = event.target.value;
         Change_List(book, selected_value);
     }
-    const authorsHandled = authors.join(',');
+    const authorsHandled = authors?.join(',');
 
     return (
         <li className="book"  >
