@@ -11,13 +11,16 @@ function Search({ books, change_list }) {
     const [search, setsearch] = useState([]);
 
     //search
-    const handleSearch = (e) => {
+    const handleSearch = async (e) => {
         setsearchInput(e.target.value);
         e.preventDefault();
         // Fetch search data based on query
-        if (e.target.value !== '') {
-            booksApi.search(e.target.value.trim(), 20).then((res) => {
-                if (res && !res.error) {
+        if (e.target.value.trim() !== '') {
+            await booksApi.search(e.target.value.trim(), 20).then((res) => {
+                if (res?.error) {
+                    return setsearch([]);
+                }
+                else if (res && !res.error) {
                     setsearch(res.map(s => {
                         books.forEach(b => { if (s.id === b.id) { s.shelf = b.shelf } })
                         return s;
@@ -30,21 +33,7 @@ function Search({ books, change_list }) {
             setsearch([]);
         }
     }
-    // useEffect(() => {
-    //     if (searchInput !== '') {
-    //         booksApi.search(searchInput.trim(), 20).then((res) => {
-    //             if (res && !res.error) {
-    //                 setsearch(res.map(s => {
-    //                     books.forEach(b => { if (s.id === b.id) { s.shelf = b.shelf } })
-    //                     return s;
-    //                 }));
-    //                 // setloading(true);
-    //             } else {
-    //                 // setloading(false);
-    //             }
-    //         });
-    //     }
-    // })
+
     return (
         <div className="search">
             <input type="text" placeholder="Search by title" value={searchInput} onChange={handleSearch} />
